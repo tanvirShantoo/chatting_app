@@ -1,0 +1,78 @@
+.main-Regiform{
+    
+    width: 400px;
+    background-color: #3795BD;
+    border-radius: 10px;
+    border: solid;
+    padding-bottom: 50px;
+}
+.log_head{
+   
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    
+    
+}
+.main-Regiform form{
+  
+    margin-left: 40px;
+  
+}
+.main-Regiform label{
+    font-size: 16px;
+    font-weight: 500;
+    @apply font-poppins;
+    display: inline-block;
+    
+}
+.main-Regiform input{
+    width: 300px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+.main-Regiform .error{
+    color: rgb(255, 0, 0);
+    font-size: 15px;
+    font-weight: 500;
+    @apply font-poppins;
+   
+}
+.loginButton{
+    width: 300px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #210062;
+    margin-top:10px;
+    border-radius: 20px;
+    border: 2px solid;
+    transition: all linear .3s;
+    font-size: 15px;
+    font-weight: 500;
+    @apply font-poppins;
+    color: #D1E9F6;
+    margin-bottom: 10px;
+}
+.loginButton:hover{
+    background-color:#080808;
+}
+.passDiv{
+    position: relative;
+}
+.eyeicon{
+    top: 50%;
+    right: 70px;
+    position: absolute;
+    transform: translateY(-85%);
+
+}
