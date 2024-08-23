@@ -7,6 +7,7 @@ import { IoEyeOff } from "react-icons/io5";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
       
@@ -17,6 +18,8 @@ const Login = () => {
   const[passwordError , setPasswordError]                  = useState('')
   const[show , setShow]                                    = useState(false)
 
+  //firebase variable
+  const auth = getAuth();
 
   const handelEmail = (e)=>{
         setemail(e.target.value)
@@ -38,6 +41,19 @@ const Login = () => {
         setPasswordError('Enter your password')
       }
       else{
+
+        signInWithEmailAndPassword(auth, email, password)
+       .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user)
+    // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
 
         toast.success('Log in successful', {
           position: "top-right",

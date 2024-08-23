@@ -7,10 +7,11 @@ import { IoEyeOff } from "react-icons/io5";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { useState, CSSProperties } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { PulseLoader } from "react-spinners";
+
 
 
 const Register = () => {
@@ -24,6 +25,8 @@ const Register = () => {
     const[show , setShow]                                    = useState(false)
     const navigate                                           =useNavigate()
 
+    //======firebase variable
+   
     const auth = getAuth()
     const[loading , setLoading]     =useState(false)
 
@@ -60,6 +63,12 @@ const handelName =(e)=>{
        setLoading(true)
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
+
+            updateProfile(auth.currentUser, {
+              displayName: name  , 
+              photoURL: "https://cdn-icons-png.freepik.com/512/3106/3106921.png"
+            })
+
         setLoading(false)
         toast.success('Sign up complete!', {
             position: "top-right",
@@ -73,6 +82,8 @@ createUserWithEmailAndPassword(auth, email, password)
             transition: Bounce,
             });
             navigate('/')
+            sendEmailVerification(auth.currentUser)
+
   })
   .catch((error) => {
         const errorCode = error.code;
